@@ -1,0 +1,26 @@
+name: Jira Sync
+
+on:
+  push:
+    branches:
+      - main
+      - 'feature/*'
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  update-jira:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Update Jira issue
+        uses: atlassian/gajira-create@v3
+        with:
+          jira-base-url: ${{ secrets.JIRA_URL }}
+          jira-user-email: ${{ secrets.JIRA_USER }}
+          jira-api-token: ${{ secrets.JIRA_API_TOKEN }}
+          project: "YOUR_JIRA_PROJECT"
+          issue-summary: "Auto-sync commit to Jira"
+          issue-description: "Commit synced from GitHub"
