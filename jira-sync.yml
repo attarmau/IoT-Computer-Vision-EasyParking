@@ -19,8 +19,8 @@ jobs:
         uses: atlassian/gajira-create@v3
         with:
           jira-base-url: "https://attarmau111.atlassian.net"
-          jira-user-email: "your.email@example.com"
-          jira-api-token: "your-jira-api-token"
-          project: "YOUR_JIRA_PROJECT"
+          jira-user-email: "attarmau111@gmail.com"
+          jira-api-token: ${{ secrets.JIRA_API_TOKEN }}
+          project: "KAN"
           issue-summary: "Auto-sync commit to Jira"
           issue-description: "Commit synced from GitHub"
